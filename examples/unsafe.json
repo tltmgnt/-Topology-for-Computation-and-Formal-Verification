@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "initial": "idle",
+  "propositions": [
+    "safe",
+    "done",
+    "approved"
+  ],
+  "states": [
+    {
+      "id": "idle",
+      "labels": [
+        "safe"
+      ]
+    },
+    {
+      "id": "reviewed",
+      "labels": [
+        "safe",
+        "approved"
+      ]
+    },
+    {
+      "id": "done",
+      "labels": [
+        "safe",
+        "approved",
+        "done"
+      ]
+    },
+    {
+      "id": "orphan",
+      "labels": []
+    }
+  ],
+  "transitions": [
+    {
+      "id": "review",
+      "source": "idle",
+      "target": "reviewed"
+    },
+    {
+      "id": "finish",
+      "source": "reviewed",
+      "target": "done"
+    },
+    {
+      "id": "hold",
+      "source": "done",
+      "target": "done"
+    },
+    {
+      "id": "bypass",
+      "source": "idle",
+      "target": "orphan"
+    }
+  ]
+}

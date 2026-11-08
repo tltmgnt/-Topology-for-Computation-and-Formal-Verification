@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "required_states": [
+    "done",
+    "orphan",
+    "missing"
+  ],
+  "disabled_transitions": [],
+  "properties": [
+    {
+      "id": "safe",
+      "kind": "invariant",
+      "predicate": {
+        "atom": "safe"
+      }
+    },
+    {
+      "id": "completion-possible",
+      "kind": "reachable",
+      "predicate": {
+        "atom": "done"
+      }
+    },
+    {
+      "id": "completion-inevitable",
+      "kind": "inevitable",
+      "predicate": {
+        "atom": "done"
+      }
+    },
+    {
+      "id": "no-deadlock",
+      "kind": "deadlock_free"
+    }
+  ]
+}
