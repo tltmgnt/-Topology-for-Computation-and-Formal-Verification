@@ -1,5 +1,14 @@
 # Topology for Computation and Formal Verification
 
+<!-- research-workbench:start -->
+## Research workbench
+
+[Open this repository's private workbench](https://tltmgnt-topology-for-computation-and-formal-verification.troturn31.chatgpt.site) · [All repository workbenches](https://tltmgnt-research-workbenches.troturn31.chatgpt.site)
+
+The hosted interface requires ChatGPT sign-in and access to the private Site. It supports browser-local research records, evidence fingerprints and workspace export. It is a prototype: no live AI model or repository backend is connected, and it does not establish external validation.
+<!-- research-workbench:end -->
+
+
 A dependency-free **explicit finite-state model checker** with topology diagnostics,
 proof and counterexample certificates, a separate certificate checker, and
 reproducible offline review bundles.
