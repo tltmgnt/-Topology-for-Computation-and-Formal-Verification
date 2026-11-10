@@ -1,0 +1,50 @@
+{
+  "case_count": 7,
+  "cases": [
+    {
+      "actual": "OBLIGATIONS_HOLD",
+      "case": "reference obligations",
+      "expected": "OBLIGATIONS_HOLD",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "case": "separate certificate checker",
+      "expected": true,
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "case": "some execution completes",
+      "expected": "PASS",
+      "passed": true
+    },
+    {
+      "actual": "FAIL",
+      "case": "not all executions complete",
+      "expected": "FAIL",
+      "passed": true
+    },
+    {
+      "actual": "PASS",
+      "case": "livelock has no deadlock",
+      "expected": "PASS",
+      "passed": true
+    },
+    {
+      "actual": true,
+      "case": "valid counterexample is not a passing property",
+      "expected": true,
+      "passed": true
+    },
+    {
+      "actual": false,
+      "case": "no external execution authority",
+      "expected": false,
+      "passed": true
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Synthetic curriculum checks only",
+  "status": "PASS"
+}

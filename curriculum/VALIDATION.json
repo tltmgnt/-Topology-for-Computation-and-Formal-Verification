@@ -1,0 +1,28 @@
+{
+  "case_count": 7,
+  "command": "python curriculum/lab.py --verify",
+  "exit_code": 0,
+  "expected_sha256": "ebda9354004ec14635740c783a2712801349325eb2d8150dc85ae50dfbb82af5",
+  "lab_sha256": "eb870018f5da894a6ce6db84ca5b06b9ddc8d4e263c858fd6e867b0a038b72f4",
+  "python": "3.12.14",
+  "repository": "tltmgnt/-Topology-for-Computation-and-Formal-Verification",
+  "schema_version": 1,
+  "scope": "Local synthetic curriculum validation on the recorded source snapshot; not complete repository CI, learning outcomes, independent scientific reproduction or deployment approval",
+  "source_and_fixture_sha256": {
+    "examples/gaps.json": "777c1608541a82525eda7d357824762de05369c4526848c9299c170e37958907",
+    "examples/livelock.json": "4564f1eca7b8b2e79f214675e86add096be5962f54a32096afe7f44df4bf8a9a",
+    "examples/model.json": "5f7793f508e33d741209887832a49d51f34ef1a2173d7395ec1b318c3de839b2",
+    "examples/outage.json": "3c4be5ae6008bb5f6dfe4f2724fb629a76331e522184d239690cca0d025dfa2c",
+    "examples/requirements.json": "5169a1fb468ece03fb68c7609b5efc503e46112f3c7837fa0d0c0f611f92b779",
+    "examples/unsafe.json": "ac9a3418f7cbf26e6b9551b41df4ada7543d7ba348a754cbf5b2d8e6c3734b2f",
+    "formal_topology/__init__.py": "a88133bcf16bdd9fc12b61d4cea4e6b2be06feb5e9378f8f23596535eaea7c98",
+    "formal_topology/__main__.py": "9d3fef318e426fe093766cd615217f4cbc9e42eab8c834cb93ab756f1bc31ae9",
+    "formal_topology/analysis.py": "31b9d85d386e54ca227169ef3a9c903f44409e55b7e3f0e3ab6e094b48a776f7",
+    "formal_topology/certificates.py": "8723db5a22c0c0fb738ebf3753cebc9f1749dbb671f92addaf151f50e0c7f84c",
+    "formal_topology/io.py": "77cd924e639f7209f81a5329ae6fe8217a66aab9177135470b94f9276ad18500",
+    "formal_topology/model.py": "047156c659f352653477bf60ef5c64530f2d2d112d8db0ef977eea4996f7e976",
+    "formal_topology/render.py": "a730b834154ae1b643732bc5588bdcb8ed1451021dffbe706879a16a40c4775a"
+  },
+  "source_base_commit": "f5162560e17d61bdf7271d3aab6f22235f9b100a",
+  "wrong_expectation_exit_code": 1
+}
