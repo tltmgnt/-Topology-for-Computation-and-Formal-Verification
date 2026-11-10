@@ -1,6 +1,6 @@
 # Topology compatibility and curriculum v2 — -Topology-for-Computation-and-Formal-Verification
 
-Version 2 adapts the explicit-molecular-graph teaching pattern to this repository's actual role. This is documentation and a learning/decision framework; it introduces no mathematical engine, runtime dependency or operational permission.
+The verified edition of version 2 adapts the explicit-molecular-graph teaching pattern to this repository's actual role. This edition adds executable learning checks and reviewed answer keys. It does not introduce a new topology engine or grant operational permission.
 
 ## Repository decision
 
@@ -40,39 +40,55 @@ Prerequisites: basic programming, sets, functions and graph vocabulary. Work in 
 | 5. Comparison | Justify mathematical necessity and cost. | Complete the six-criterion card for the existing approach and one proposed alternative; record unknowns honestly. | Evidence-backed recommendation with baseline and explicit veto conditions. |
 | 6. Reproduction | Communicate the bounded result. | Reproduce the capstone using existing offline fixtures and record software version, inputs, outputs and limitations. | Reviewable notebook or report distinguishing computation, replay, independent evaluation and authorization. |
 
-## Source-linked reading laboratory
+## Worked reasoning and source explanation
 
-The table is a guided selection of source lines, not an assertion that the whole repository is covered. Line numbers refer to the inspected source blob `0720f971f1ce370e9d6184f44975527cc0e3ac4f` in [formal_topology/analysis.py](../../formal_topology/analysis.py). Recheck anchors after source changes.
+The livelock fixture permits a path to completion, so EF completion passes, but also permits an infinite target-avoiding execution, so AF completion fails. Every reachable state can still have an outgoing transition: deadlock freedom does not imply progress. The separate check_certificates() function validates the reported witness or counterexample; a valid failure certificate does not make the property pass.
 
-| Line | Statement | Learning check |
+Read the [inspected source](https://github.com/tltmgnt/-Topology-for-Computation-and-Formal-Verification/blob/f5162560e17d61bdf7271d3aab6f22235f9b100a/formal_topology/analysis.py) alongside the [executable answer key](../../curriculum/lab.py). The source link is pinned to the inspected revision; the lab and any explicitly described fix are in this change.
+
+## Run the worked laboratory
+
+From the repository root, with Python 3.12 (the recorded local version is 3.12.14):
+
+```sh
+python curriculum/lab.py --verify
+```
+
+The lab checks **7 explicit expectations** against existing repository functions. It prints a JSON case report and exits nonzero on a wrong result. `--verify` additionally compares the entire case report with [expected.json](../../curriculum/expected.json). Read the input and predict each result before opening the answer key. No API account, credentials, model download, trading action or equipment connection is needed.
+
+| Checkpoint | Expected answer |
+| --- | --- |
+| reference obligations | `"OBLIGATIONS_HOLD"` |
+| separate certificate checker | `true` |
+| some execution completes | `"PASS"` |
+| not all executions complete | `"FAIL"` |
+| livelock has no deadlock | `"PASS"` |
+| valid counterexample is not a passing property | `true` |
+| no external execution authority | `false` |
+
+The comparisons above encode independently specified small examples and contract expectations; a passing answer key is not evidence of complete domain correctness. The original functions and their existing test suites remain the authority for broader supported contracts.
+
+## Learner tasks and assessment rubric
+
+1. Before running the lab, predict every expected answer and derive one numeric result or state transition by hand.
+2. Explain the worked reasoning above using the referenced source, including the rejected or counterexample case.
+3. Add a new valid example and a nearby failing example. Explain which assumption changes, then compare against the existing implementation. For concept/static labs, keep the result explicitly at that level.
+4. Complete the scorecard for a proposed extension and a simpler baseline. Leave measurements unknown until collected; a task that the baseline already solves is not evidence for additional topology.
+
+| Competency | Points | Full-credit evidence |
 | --- | --- | --- |
-| [10](../../formal_topology/analysis.py#L10) | `def canonical(value):` | State the input/output contract and trace one normal and one failing case. |
-| [11](../../formal_topology/analysis.py#L11) | `return (json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False) + '\n').encode()` | Predict the returned value and distinguish a computed result from authorization. |
-| [14](../../formal_topology/analysis.py#L14) | `def fingerprint(value):` | State the input/output contract and trace one normal and one failing case. |
-| [15](../../formal_topology/analysis.py#L15) | `return hashlib.sha256(canonical(value)).hexdigest()` | Explain the exact bytes bound by the digest and why hashing does not authenticate the source. |
-| [18](../../formal_topology/analysis.py#L18) | `def traversal(graph, initial):` | State the input/output contract and trace one normal and one failing case. |
-| [26](../../formal_topology/analysis.py#L26) | `return parents` | Trace discovery order and state the reachability or shortest-path invariant. |
-| [29](../../formal_topology/analysis.py#L29) | `def path_to(parents, target):` | State the input/output contract and trace one normal and one failing case. |
-| [35](../../formal_topology/analysis.py#L35) | `return {'states': list(reversed(states)), 'transitions': list(reversed(transitions))}` | Predict the returned value and distinguish a computed result from authorization. |
-| [38](../../formal_topology/analysis.py#L38) | `def strongly_connected(graph, reachable):` | State the input/output contract and trace one normal and one failing case. |
-| [47](../../formal_topology/analysis.py#L47) | `return groups` | Predict the returned value and distinguish a computed result from authorization. |
-| [50](../../formal_topology/analysis.py#L50) | `def inevitability(graph, model, predicate, reachable):` | State the input/output contract and trace one normal and one failing case. |
-| [60](../../formal_topology/analysis.py#L60) | `return 'PASS', {'ranks': dict(sorted(ranks.items()))}` | Predict the returned value and distinguish a computed result from authorization. |
-| [71](../../formal_topology/analysis.py#L71) | `return 'FAIL', {'prefix': {'states': states[:start + 1], 'transitions': transitions[:start]},` | Predict the returned value and distinguish a computed result from authorization. |
-| [76](../../formal_topology/analysis.py#L76) | `def property_result(prop, graph, model, parents):` | State the input/output contract and trace one normal and one failing case. |
-| [92](../../formal_topology/analysis.py#L92) | `return {'id': prop['id'], 'kind': kind, 'status': status, 'evidence': evidence}` | Predict the returned value and distinguish a computed result from authorization. |
-| [95](../../formal_topology/analysis.py#L95) | `def build_report(data, requirements):` | State the input/output contract and trace one normal and one failing case. |
-| [112](../../formal_topology/analysis.py#L112) | `return {'schema_version': 1, 'engine_version': ENGINE_VERSION,` | Separate type, shape and value checks; test a missing field and an invalid value. |
-## Assessment and verification
+| Model and contract | 0–3 | Correct objects, relation direction, labels/units, input bounds and missingness. |
+| Derivation and trace | 0–3 | Hand derivation agrees with the specified fixture; source steps explain why. |
+| Counterexample | 0–3 | New failing/boundary case has a justified expected result; rejection is not suppressed. |
+| Scope and necessity | 0–3 | Distinguishes software behavior from validation and compares an explicit simpler alternative. |
 
-A learner must explain the model, trace the capstone, identify a counterexample and state the scope boundary. Assess these four competencies equally; a numerical score cannot compensate for an unsupported scientific or operational claim.
+Completion requires at least 10/12 and no zero in scope/necessity. A runnable answer key alone is not evidence that a learner achieved this competency. No learner-outcome study has been performed.
 
-Relevant existing checks:
+## Verification evidence and maintenance
 
-- [tests/test_formal.py](../../tests/test_formal.py)
-- [tests/test_researchos.py](../../tests/test_researchos.py)
+[VALIDATION.json](../../curriculum/VALIDATION.json) records the inspected base revision, local Python version, source/fixture hashes, lab/answer hashes, case count and exit codes. All cases were executed locally. An in-memory copy with a deliberately wrong comparison was also executed and returned nonzero, checking that the grading failure path is active. Those injected failures are harness checks, not scientific adversarial evaluations.
 
-Follow [README](../../README.md) for environment and installed-package instructions. Read scripts before execution; source-reading exercises do not authorize provider calls, model downloads, live orders, hardware actions or messages. Synthetic fixtures establish software behavior only. This documentation change does not report those exercises as already executed.
+The dedicated [curriculum workflow](../../.github/workflows/curriculum.yml) runs the same `--verify` command on relevant pull-request changes. CI status is reported by GitHub; the local record does not assert that remote CI passed. Existing full-suite and installed-package requirements still apply to runtime changes. When source or fixture semantics change, inspect the diff and rederive answers before updating expected.json. Never regenerate expected answers solely to silence a failure. Refresh the local validation record after an actual run; do not rewrite its recorded base revision as if a new run occurred.
 
 ## Interoperability and adoption gate
 
